@@ -13,6 +13,5 @@ func (ud *userDomainService) CreateUser(
 	logger.Info("Init CreateUser model", zap.String("Journey", "CreateUser"))
 
 	userDomain.EncryptPassword()
-
 	return nil
 }
