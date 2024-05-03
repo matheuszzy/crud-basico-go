@@ -6,3 +6,8 @@ type UserRequest struct {
 	Name     string `json:"name" binding:"required,min=4,max=100" example:"John Doe"`
 	Age      int8   `json:"age" binding:"required,gte=0,lte=130"`
 }
+
+type UserUpdateRequest struct {
+	Name string `json:"name" binding:"omitempty,min=4,max=100" example:"John Doe"`
+	Age  int8   `json:"age" binding:"omitempty,gte=0,lte=130"`
+}

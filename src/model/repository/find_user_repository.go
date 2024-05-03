@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/matheuszzy/crud-basico-go/src/config/logger"
 	"github.com/matheuszzy/crud-basico-go/src/config/rest_err"
@@ -20,8 +21,8 @@ func (ur *userRepository) FindUserByEmail(
 ) (model.UserDomainInterface, *rest_err.RestErr) {
 	logger.Info("Init findUserByEmail repository",
 		zap.String("Journey", "findUserByEmail"))
-
-	collection := ur.databaseConnection.Collection(COLLECTION_USER)
+	collection_name := os.Getenv(COLLECTION_USER)
+	collection := ur.databaseConnection.Collection(collection_name)
 
 	userEntity := &entity.UserEntity{}
 
@@ -61,7 +62,8 @@ func (ur *userRepository) FindUserByID(
 	logger.Info("Init findUserByID repository",
 		zap.String("Journey", "findUserByID"))
 
-	collection := ur.databaseConnection.Collection(COLLECTION_USER)
+	collection_name := os.Getenv(COLLECTION_USER)
+	collection := ur.databaseConnection.Collection(collection_name)
 
 	userEntity := &entity.UserEntity{}
 	userId, _ := primitive.ObjectIDFromHex(id)
