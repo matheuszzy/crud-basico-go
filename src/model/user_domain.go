@@ -10,6 +10,9 @@ type UserDomainInterface interface {
 	GetPassword() string
 	GetAge() int8
 	GetName() string
+	GetID() string
+
+	SetId(id string)
 
 	EncryptPassword()
 }
@@ -27,10 +30,19 @@ func NewUserDomain(
 }
 
 type userDomain struct {
+	id       string
 	email    string
 	password string
 	name     string
 	age      int8
+}
+
+func (ud *userDomain) SetId(id string) {
+	ud.id = id
+}
+
+func (ud *userDomain) GetID() string {
+	return ud.id
 }
 
 func (ud *userDomain) EncryptPassword() {

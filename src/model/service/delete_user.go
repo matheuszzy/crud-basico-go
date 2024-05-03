@@ -2,6 +2,6 @@ package service
 
 import "github.com/matheuszzy/crud-basico-go/src/config/rest_err"
 
-func (ud *userDomainService) DeleteUser(string) *rest_err.RestErr {
+func (ud *userDomainService) DeleteUserService(string) *rest_err.RestErr {
 	return nil
 }
