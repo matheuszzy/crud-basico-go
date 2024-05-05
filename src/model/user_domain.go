@@ -3,6 +3,8 @@ package model
 import (
 	"crypto/md5"
 	"encoding/hex"
+
+	"github.com/matheuszzy/crud-basico-go/src/config/rest_err"
 )
 
 type UserDomainInterface interface {
@@ -15,6 +17,7 @@ type UserDomainInterface interface {
 	SetId(id string)
 
 	EncryptPassword()
+	GenerateToken() (string, *rest_err.RestErr)
 }
 
 func NewUserDomain(
@@ -36,6 +39,16 @@ func NewUserUpdateDomain(
 	return &userDomain{
 		name: name,
 		age:  age,
+	}
+}
+
+func NewUserLoginDomain(
+	email string,
+	password string,
+) UserDomainInterface {
+	return &userDomain{
+		email:    email,
+		password: password,
 	}
 }
 
